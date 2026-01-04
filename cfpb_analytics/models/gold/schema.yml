@@ -1,0 +1,41 @@
+version: 2
+
+models:
+  - name: gold_complaints_daily
+    description: "Daily complaint aggregates by date/company/product/state."
+    columns:
+      - name: date_received
+        tests: [not_null]
+      - name: company
+        tests: [not_null]
+      - name: product
+        tests: [not_null]
+      - name: state
+        tests: [not_null]
+
+  - name: gold_baselines_daily
+    description: "Daily baseline aggregates by date/company/product/state."
+    columns:
+      - name: date_received
+        tests: [not_null]
+      - name: company
+        tests: [not_null]
+      - name: product
+        tests: [not_null]
+      - name: state
+        tests: [not_null]
+      - name: complaint_cnt
+        tests: [not_null]
+  - name: gold_spike_alerts
+    description: "Daily spike alerts by date/company/product/state."
+    columns:
+      - name: date_received
+        tests: [not_null]
+      - name: company
+        tests: [not_null]
+      - name: product
+        tests: [not_null]
+      - name: state
+        tests: [not_null]
+      - name: complaint_cnt
+        tests: [not_null]
