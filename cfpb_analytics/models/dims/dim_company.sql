@@ -1,14 +1,14 @@
 
 with cte_base as (
     select distinct trim(company) as company
-    from {{ ref('gold_complaints_daily') }}
+    from {{ source('silver', 'complaints_silver') }}
 ),
 stats as (
     select
         trim(company) as company,
         min(date_received) as first_complaint_date,
         max(date_received) as last_complaint_date
-    from {{ ref('gold_complaints_daily') }}
+    from {{ source('silver', 'complaints_silver') }}
     group by 1
 )
 select

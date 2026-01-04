@@ -2,7 +2,7 @@ with bounds as (
     select 
         date_sub(min(date_received),30) as start_date,
         date_add(max(date_received),30) as end_date
-    from {{ ref('gold_complaints_daily') }}
+    from {{ source('silver', 'complaints_silver') }}
 ),
 date_spine as (
     select explode(sequence(start_date,end_date, interval 1 day)) as date
